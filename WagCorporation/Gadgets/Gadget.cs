@@ -1,5 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
+using System.Collections;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -8,7 +8,7 @@ namespace Gadgets
 {
     public class Gadget : IGadget
     {
-        private List<Object> widgets = new List<object>();
+        private ArrayList widgets = new ArrayList();
         private int _iSwitches;
         private int _iButtons;
         private int _iLights;
