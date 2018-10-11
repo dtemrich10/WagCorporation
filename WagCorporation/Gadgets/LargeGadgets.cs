@@ -17,6 +17,9 @@ namespace Gadgets
         public override void SetupWidgets()
         {
             Console.WriteLine("A Large Gadget comes with 3 Small Widgets, 6 Medium Widgets and 3 Large Widgets.");
+            AddSmallWidgets(3);
+            AddMediumWidgets(6);
+            AddLargeWidgets(3);
         }
 
         public override void SetupLights()

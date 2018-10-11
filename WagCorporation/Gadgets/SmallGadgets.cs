@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using WagCorporation;
 
 namespace Gadgets
 {
@@ -16,6 +17,8 @@ namespace Gadgets
         public override void SetupWidgets()
         {
             Console.WriteLine("A Small Gadget comes with 1 Small Widget & 1 Med Widget");
+            AddSmallWidgets(1);
+            AddMediumWidgets(1);
         }
 
         public override void SetupLights()
@@ -26,13 +29,13 @@ namespace Gadgets
 
         public override void SetupSwitches()
         {
-            Console.WriteLine("One Switch is added for a Small Gadget");
+            Console.WriteLine("One Switch is added for a Small Gadget for " + SwitchPrice + " each" );
             Switches = 1;
         }
 
         public override void SetupButtons()
         {
-            Console.WriteLine("Two Buttons are added for a Small Gadget");
+            Console.WriteLine("Two Buttons are added for a Small Gadget for " + ButtonPrice + " each");
             Buttons = 2;
         }
     }

@@ -16,6 +16,9 @@ namespace Gadgets
         public override void SetupWidgets()
         {
             Console.WriteLine("A Mediam Gadget comes with 2 Small Widgets, 2 Medium Widgets and 1 Large Widget.");
+            AddSmallWidgets(2);
+            AddMediumWidgets(2);
+            AddLargeWidgets(1);
         }
 
         public override void SetupLights()
