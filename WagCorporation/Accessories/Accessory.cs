@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace WagCorporation
+namespace Accessories
 {
   public class Accessory : iAccessory
     {
@@ -33,6 +33,12 @@ namespace WagCorporation
             {
                 _fPrice = value;
             }
+        }
+
+        public float GetTotalPriceMoney()
+        {
+            float fTotalPrice = _iQuantity * _fPrice;
+            return fTotalPrice;
         }
 
         public string GetTotalPrice()

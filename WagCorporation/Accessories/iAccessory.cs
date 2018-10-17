@@ -3,10 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace WagCorporation
+namespace Accessories
 {
     public interface iAccessory
     {
-         string GetTotalPrice();
+        string GetTotalPrice();
+        float GetTotalPriceMoney();
     }
 }

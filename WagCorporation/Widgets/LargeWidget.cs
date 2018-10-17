@@ -4,11 +4,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace WagCorporation
+namespace Widgets
 {
     public class LargeWidget : Widget, IWidgets
     {
-        public LargeWidget()
+        public LargeWidget() : base(400.00f)
         {
             Console.WriteLine("Adding a Large widget");
         }

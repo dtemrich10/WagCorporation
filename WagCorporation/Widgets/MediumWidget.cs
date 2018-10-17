@@ -4,11 +4,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace WagCorporation
+namespace Widgets
 {
     public class MediumWidget: Widget, IWidgets
     {
-        public MediumWidget()
+        public MediumWidget() : base(250.00f)
         {
             Console.WriteLine("Adding a medium widget");
         }
@@ -27,5 +27,6 @@ namespace WagCorporation
             Console.WriteLine("Medium widget has five springs.");
             Springs = 5;
         }
+
     }
 }

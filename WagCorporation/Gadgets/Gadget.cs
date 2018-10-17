@@ -1,19 +1,26 @@
-﻿using System;
+﻿using Accessories;
+using System;
 using System.Collections;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using WagCorporation;
+using Widgets;
 
 namespace Gadgets
 {
     public class Gadget : IGadget
     {
-        private ArrayList widgets = new ArrayList();
+        private ArrayList _Widgets = new ArrayList();
         private Switch _Switches;
         private Buttons _Buttons;
         private Lights _Lights;
 
+        public Gadget()
+        {
+            _Switches = new Switch();
+            _Buttons = new Buttons();
+            _Lights = new Lights();
+        }
         protected int Switches
         {
             get
@@ -98,10 +105,11 @@ namespace Gadgets
 
         private void AddWidget(IWidgets iw)
         {
-            widgets.Add(iw);
+            _Widgets.Add(iw);
             iw.SetupGears();
             iw.SetupLevers();
             iw.SetupSprings();
+            ((Widget)iw).SetupPainted();
         }
 
         public virtual void SetupWidgets()
@@ -121,5 +129,9 @@ namespace Gadgets
 
         }
 
+        public void GetGadgetOrderSummary()
+        {
+            
+        }
     }
 }

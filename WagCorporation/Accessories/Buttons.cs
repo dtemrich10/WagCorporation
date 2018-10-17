@@ -3,8 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace WagCorporation
-
+namespace Accessories
 {
    public class Buttons : Accessory
     {

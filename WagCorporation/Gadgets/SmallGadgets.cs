@@ -23,20 +23,20 @@ namespace Gadgets
 
         public override void SetupLights()
         {
-            Console.WriteLine("No Lights are available for a Small Gadget");
             Lights = 0;
+            Console.WriteLine("No Lights are available for a Small Gadget");
         }
 
         public override void SetupSwitches()
         {
-            Console.WriteLine("One Switch is added for a Small Gadget for " + SwitchPrice + " each" );
             Switches = 1;
+            Console.WriteLine("One Switch is added for a Small Gadget for " + SwitchPrice + " each" );
         }
 
         public override void SetupButtons()
         {
-            Console.WriteLine("Two Buttons are added for a Small Gadget for " + ButtonPrice + " each");
             Buttons = 2;
+            Console.WriteLine("Two Buttons are added for a Small Gadget for " + ButtonPrice + " each");
         }
     }
 }

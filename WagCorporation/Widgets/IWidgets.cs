@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace WagCorporation
+namespace Widgets
 {
     public interface IWidgets
     {
