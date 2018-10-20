@@ -8,7 +8,7 @@ namespace Gadgets
 {
     public class MediumGadgets : Gadget, IGadget
     {
-        public MediumGadgets()
+        public MediumGadgets() : base (600.00f)
         {
             Console.WriteLine("You have selected a Medium Gadget");
         }

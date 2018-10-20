@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Gadgets;
+using Order;
 
 namespace WagCorporation
 {
@@ -11,39 +12,19 @@ namespace WagCorporation
     {
         public static void Main(string[] args)
         {
-            Gadget gadget = null;
+
             Console.WriteLine("Welcome to the Wag Corporation's Gadget ordering application");
-            Console.Write("Enter The Gadget size you wish S)mall, M)edium, L)arge > ");
-            String sGadgetOrder = Console.ReadLine();
-
-            switch (sGadgetOrder)
+            Console.Write("Will this be a R)etail or C)ustom order? > ");
+            string sOrderType = Console.ReadLine();
+            if (sOrderType.Equals("R") == true || sOrderType.Equals("r") == true)
             {
-                case "S":
-                case "s":
-                    gadget = new SmallGadgets();
-                break;
-
-                case "M":
-                case "m":
-                    gadget = new MediumGadgets();
-                break;
-
-                case "L":
-                case "l":
-                    gadget = new LargeGadgets();
-                break;
-
-                default:
-                    Console.WriteLine("Try again");
-                break;
+                OrderFactory retailOrder = new RetailOrderFactory();
+                retailOrder.Build();
             }
-
-            if (gadget != null)
+            else
             {
-                gadget.SetupWidgets();
-                gadget.SetupSwitches();
-                gadget.SetupButtons();
-                gadget.SetupLights();
+                OrderFactory customOrder = new CustomOrderFactory();
+                customOrder.Build();
             }
         }
     }

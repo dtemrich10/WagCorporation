@@ -10,7 +10,7 @@ namespace Widgets
     {
         public MediumWidget() : base(250.00f)
         {
-            Console.WriteLine("Adding a medium widget");
+            Console.WriteLine("Adding a medium widget for " + Price.ToString("C2"));
         }
         public override void SetupGears()
         {

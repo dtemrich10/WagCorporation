@@ -15,13 +15,18 @@ namespace Widgets
         private Painted _painted;
         private float _Price;
 
-        public Widget( float Price)
+        public Widget( float Price ) 
         {
             _Price = Price;
             _painted = new Painted();
         }
 
-        protected int Gears
+        protected float Price
+        {
+            get { return _Price; }
+        }
+
+        public int Gears
         {
             get
             {
@@ -32,7 +37,7 @@ namespace Widgets
                 _iGears = value;
             }
         }
-        protected int Springs
+        public int Springs
         {
             get
             {
@@ -43,7 +48,7 @@ namespace Widgets
                 _iSprings = value;
             }
         }
-        protected int Levers
+        public int Levers
         {
             get
             {
@@ -71,34 +76,41 @@ namespace Widgets
         {
             String sPainted;
 
-            Console.Write("Choose an option for the Widget to be painted (Paint, Plated, Plain) ");
+            Console.Write("Choose an option for the Widget to be painted (Paint, Plated, Plain) ? > ");
             sPainted = Console.ReadLine();
             switch( sPainted )
             {
                 case "Plated":
+                case "plated":
                     _painted.paint  = Painted.Paint.plated;
                     break;
                 case "Paint":
+                case "paint":
                     String sColor;
 
-                    _painted.paint = Painted.Paint.plated;
-                    Console.Write("What color would you like (Blue, Gold, Green, Orange, Red, Purple) ? ");
+                    _painted.paint = Painted.Paint.painted;
+                    Console.Write("What color would you like (Blue, Gold, Green, Orange, Red, Purple) ? > ");
                     sColor = Console.ReadLine();
                     switch(sColor)
                     {
                         case "Blue":
+                        case "blue":
                             _painted.color = Painted.Colors.Blue;
                             break;
                         case "Green":
+                        case "green":
                             _painted.color = Painted.Colors.Green;
                             break;
                         case "Orange":
+                        case "orange":
                             _painted.color = Painted.Colors.Orange;
                             break;
                         case "Red":
+                        case "red":
                             _painted.color = Painted.Colors.Red;
                             break;
                         case "Purple":
+                        case "purple":
                             _painted.color = Painted.Colors.Purple;
                             break;
                         default:
@@ -112,11 +124,38 @@ namespace Widgets
             }
         }
 
-        public string getPainted()
+        public void getPainted()
         {
-            string sPainted = "Wideget is ";
 
-            return sPainted;
+            if (_painted.paint.Equals(Painted.Paint.painted) == true )
+            {
+                Console.WriteLine(" Widget is " + _painted.paint.ToString() + " " + _painted.color.ToString());
+            }
+            else if(_painted.paint.Equals(Painted.Paint.plated ) == true)
+            {
+                Console.WriteLine(" Widget is " + _painted.paint.ToString() + " and has a surcharge of " + _painted.GetTotalPrice().ToString("C2"));
+            }
+            else
+            {
+                Console.WriteLine(" Widget is " + _painted.paint.ToString());
+            }
+
+        }
+
+        public void getWidgetOrderSummary()
+        {
+            if (this.GetType() == typeof(SmallWidget ))
+            {
+                Console.Write("This is a Small Widget");
+            }
+            else if (this.GetType() == typeof(MediumWidget ))
+            {
+                Console.Write("This is a Medium Widget");
+            }
+            else
+            {
+                Console.Write("This is a Large Widget");
+            }
         }
 
         public float getWidgetPrice()

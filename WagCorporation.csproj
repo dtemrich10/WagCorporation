@@ -1,0 +1,102 @@
+﻿<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
+    <ProjectGuid>{F830FCE0-A31F-44BD-9295-73A902510417}</ProjectGuid>
+    <OutputType>Exe</OutputType>
+    <NoStandardLibraries>false</NoStandardLibraries>
+    <AssemblyName>ConsoleApplication</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <TargetFrameworkProfile>Client</TargetFrameworkProfile>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <PlatformTarget>x86</PlatformTarget>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <PlatformTarget>x86</PlatformTarget>
+  </PropertyGroup>
+  <PropertyGroup>
+    <RootNamespace>WagCorporation</RootNamespace>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Xml.Linq" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include=".vs\WagCorporation\v15\.suo" />
+    <None Include=".vs\WagCorporation\v15\Server\sqlite3\db.lock" />
+    <None Include=".vs\WagCorporation\v15\Server\sqlite3\storage.ide" />
+    <None Include=".vs\WagCorporation\v15\Server\sqlite3\storage.ide-shm" />
+    <None Include=".vs\WagCorporation\v15\Server\sqlite3\storage.ide-wal" />
+    <None Include="WagCorporation\App.config" />
+    <None Include="WagCorporation\bin\Debug\WagCorporation.exe.config" />
+    <None Include="WagCorporation\obj\Debug\DesignTimeResolveAssemblyReferencesInput.cache" />
+    <None Include="WagCorporation\obj\Debug\WagCorporation.csproj.CoreCompileInputs.cache" />
+    <None Include="WagCorporation\obj\Debug\WagCorporation.csprojAssemblyReference.cache" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="WagCorporation\Accessories\Accessory.cs" />
+    <Compile Include="WagCorporation\Accessories\Buttons.cs" />
+    <Compile Include="WagCorporation\Accessories\iAccessory.cs" />
+    <Compile Include="WagCorporation\Accessories\Lights.cs" />
+    <Compile Include="WagCorporation\Accessories\Painted.cs" />
+    <Compile Include="WagCorporation\Accessories\Power.cs" />
+    <Compile Include="WagCorporation\Accessories\Switch.cs" />
+    <Compile Include="WagCorporation\Gadgets\Gadget.cs" />
+    <Compile Include="WagCorporation\Gadgets\IGadget.cs" />
+    <Compile Include="WagCorporation\Gadgets\LargeGadgets.cs" />
+    <Compile Include="WagCorporation\Gadgets\MediumGadgets.cs" />
+    <Compile Include="WagCorporation\Gadgets\SmallGadgets.cs" />
+    <Compile Include="WagCorporation\obj\Debug\TemporaryGeneratedFile_036C0B5B-1481-4323-8D20-8F5ADCB23D92.cs" />
+    <Compile Include="WagCorporation\obj\Debug\TemporaryGeneratedFile_5937a670-0e60-4077-877b-f7221da3dda1.cs" />
+    <Compile Include="WagCorporation\obj\Debug\TemporaryGeneratedFile_E7A71F73-0F8D-4B9B-B56E-8E70B10BC5D3.cs" />
+    <Compile Include="WagCorporation\Order\CustomOrder.cs" />
+    <Compile Include="WagCorporation\Order\CustomOrderFactory.cs" />
+    <Compile Include="WagCorporation\Order\IOrder.cs" />
+    <Compile Include="WagCorporation\Order\OrderFactory.cs" />
+    <Compile Include="WagCorporation\Order\RetailOrder.cs" />
+    <Compile Include="WagCorporation\Order\RetailOrderFactory.cs" />
+    <Compile Include="WagCorporation\Program.cs" />
+    <Compile Include="WagCorporation\Properties\AssemblyInfo.cs" />
+    <Compile Include="WagCorporation\Widgets\IWidgets.cs" />
+    <Compile Include="WagCorporation\Widgets\LargeWidget.cs" />
+    <Compile Include="WagCorporation\Widgets\MediumWidget.cs" />
+    <Compile Include="WagCorporation\Widgets\SmallWidget.cs" />
+    <Compile Include="WagCorporation\Widgets\Widget.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="WagCorporation\bin\Debug\WagCorporation.exe" />
+    <Content Include="WagCorporation\bin\Debug\WagCorporation.pdb" />
+    <Content Include="WagCorporation\obj\Debug\WagCorporation.csproj.FileListAbsolute.txt" />
+    <Content Include="WagCorporation\obj\Debug\WagCorporation.exe" />
+    <Content Include="WagCorporation\obj\Debug\WagCorporation.pdb" />
+    <Content Include="WagCorporation\WagCorporation.csproj" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="WagCorporation\bin\Release\" />
+    <Folder Include="WagCorporation\obj\Debug\TempPE\" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSHARP.Targets" />
+  <ProjectExtensions>
+    <VisualStudio AllowExistingFolder="true" />
+  </ProjectExtensions>
+</Project>

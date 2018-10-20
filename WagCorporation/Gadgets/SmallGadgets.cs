@@ -9,7 +9,7 @@ namespace Gadgets
 {
     public class SmallGadgets : Gadget, IGadget
     {
-        public SmallGadgets()
+        public SmallGadgets() : base(500.00f)
         {
             Console.WriteLine("You have selected a Small Gadget");
         }

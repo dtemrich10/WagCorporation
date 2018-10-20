@@ -10,7 +10,7 @@ namespace Widgets
     {
         public LargeWidget() : base(400.00f)
         {
-            Console.WriteLine("Adding a Large widget");
+            Console.WriteLine("Adding a Large widget for " + Price.ToString("C2"));
         }
         public override void SetupGears()
         {

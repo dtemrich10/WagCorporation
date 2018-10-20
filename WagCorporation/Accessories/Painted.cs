@@ -12,15 +12,18 @@ namespace Accessories
         public enum Paint { painted, plated, plain }
         public enum Colors { Blue, Gold, Green, Orange, Red, Purple}
 
+        private Paint _Paint;
+        private Colors _Color;
+
         public Colors color
         {
             get
             {
-                return color;
+                return _Color;
             }
             set
             {
-                color = value;
+                _Color = value;
             }
 
         }
@@ -29,11 +32,11 @@ namespace Accessories
         {
             get
             {
-                return paint;
+                return _Paint;
             }
             set
             {
-                paint = value;
+                _Paint = value;
             }
 
         }

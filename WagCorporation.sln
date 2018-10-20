@@ -3,23 +3,23 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.28010.2003
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WagCorporation", "WagCorporation\WagCorporation.csproj", "{81BBB675-0D62-4647-BC85-BD64F74BF998}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WagCorporation", "WagCorporation.csproj", "{F830FCE0-A31F-44BD-9295-73A902510417}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
-		Debug|Any CPU = Debug|Any CPU
-		Release|Any CPU = Release|Any CPU
+		Debug|x86 = Debug|x86
+		Release|x86 = Release|x86
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{81BBB675-0D62-4647-BC85-BD64F74BF998}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{81BBB675-0D62-4647-BC85-BD64F74BF998}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{81BBB675-0D62-4647-BC85-BD64F74BF998}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{81BBB675-0D62-4647-BC85-BD64F74BF998}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F830FCE0-A31F-44BD-9295-73A902510417}.Debug|x86.ActiveCfg = Debug|x86
+		{F830FCE0-A31F-44BD-9295-73A902510417}.Debug|x86.Build.0 = Debug|x86
+		{F830FCE0-A31F-44BD-9295-73A902510417}.Release|x86.ActiveCfg = Release|x86
+		{F830FCE0-A31F-44BD-9295-73A902510417}.Release|x86.Build.0 = Release|x86
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
-		SolutionGuid = {7B24787B-6095-4C37-B884-87A21502EE0A}
+		SolutionGuid = {9D1A1DE6-028F-4213-9736-41F935E7EAE6}
 	EndGlobalSection
 EndGlobal

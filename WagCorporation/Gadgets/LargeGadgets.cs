@@ -9,7 +9,7 @@ namespace Gadgets
     public class LargeGadgets : Gadget, IGadget
     {
 
-        public LargeGadgets()
+        public LargeGadgets() : base(800.00f)
         {
             Console.WriteLine("You have selected a Large Gadget");
         }

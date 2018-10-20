@@ -14,13 +14,28 @@ namespace Gadgets
         private Switch _Switches;
         private Buttons _Buttons;
         private Lights _Lights;
+        private float _Price;
 
-        public Gadget()
+
+        private int _iTotalGears = 0;
+        private int _iTotalSprings = 0;
+        private int _iTotalLevers = 0;
+        private float _fTotalWidgetPrice = 0.0f;
+        private float _fTotalWGadgetPrice = 0.0f;
+
+        public Gadget( float price )
         {
+            _Price = price;
             _Switches = new Switch();
             _Buttons = new Buttons();
             _Lights = new Lights();
         }
+
+        public float Price
+        {
+            get { return _Price; }
+        }
+
         protected int Switches
         {
             get
@@ -131,7 +146,27 @@ namespace Gadgets
 
         public void GetGadgetOrderSummary()
         {
-            
+
+            Console.WriteLine("This order has a total of  " + _Widgets.Count.ToString()  + " Widgets");
+
+            foreach (IWidgets wi in _Widgets)
+            {
+                ((Widget)wi).getWidgetOrderSummary();
+                ((Widget)wi).getPainted();
+                _fTotalWidgetPrice += ((Widget)wi).getWidgetPrice();
+                _iTotalGears += ((Widget)wi).Gears ;
+                _iTotalSprings += ((Widget)wi).Springs;
+                _iTotalLevers += ((Widget)wi).Levers;
+            }
+            Console.WriteLine("This order comes with " + _iTotalGears.ToString()  + " Gears");
+            Console.WriteLine("This order comes with " + _iTotalLevers.ToString() + " Levers");
+            Console.WriteLine("This order comes with " + _iTotalSprings.ToString() + " Springs");
+            Console.WriteLine("Subtotal Widget price " + _fTotalWidgetPrice.ToString("C2"));
+        }
+
+        public float GetGadgetOrderTotalPrice()
+        {
+            return _fTotalWGadgetPrice + _fTotalWidgetPrice;
         }
     }
 }
