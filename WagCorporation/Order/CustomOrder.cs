@@ -20,7 +20,7 @@ namespace Order
         {
             ArrayList Gadgets = new ArrayList();
             Gadget gadget = null;
-            float FTotalOrderPrice = 0.0f;
+            float fTotalOrderPrice = 0.0f;
 
             do
             {
@@ -52,10 +52,12 @@ namespace Order
 
                 if (gadget != null)
                 {
+                    gadget.SetupPainted();
                     gadget.SetupWidgets();
                     gadget.SetupSwitches();
                     gadget.SetupButtons();
                     gadget.SetupLights();
+                    gadget.SetupPower();
                     Gadgets.Add(gadget);
                 }
 
@@ -86,15 +88,21 @@ namespace Order
                 {
                     Console.WriteLine("This is a Large Gadget for " + ((Gadget)g).Price.ToString("C2"));
                 }
+                Console.WriteLine("It comes with " + ((Gadget)g).Buttons + " Buttons.");
+                Console.WriteLine("It comes with " + ((Gadget)g).Lights + " LIghts.");
+                Console.WriteLine("It comes with " + ((Gadget)g).Switches + " Switches.");
+                Console.WriteLine("It comes with a " + ((Gadget)g).GetPower() + " for " + ((Gadget)g).GetGadgetPowerPrice());
+                ((Gadget)g).GetPainted();
 
-                ((Gadget)g).GetGadgetOrderSummary();
-                Console.WriteLine("Subtotal Gadget Price > " + ((Gadget)g).GetGadgetOrderTotalPrice().ToString("C2"));
-                FTotalOrderPrice += ((Gadget)g).GetGadgetOrderTotalPrice();
+                ((Gadget)g).GetWidgetOrderSummary();
+                fTotalOrderPrice = ((Gadget)g).GetGadgetOrderTotalPrice();
+                Console.WriteLine("Total Gadget & Widget Price > " + fTotalOrderPrice.ToString("C2"));
+                
             }
 
-            Console.WriteLine("Shipping cost $25.00");
-            FTotalOrderPrice += 25.00f;
-            Console.WriteLine("Grand Total Order Price > " + FTotalOrderPrice.ToString("C2"));
+            Console.WriteLine("Shipping Cost > $25.00");
+            fTotalOrderPrice += 25.00f;
+            Console.WriteLine("Grand Total Order Price > " + fTotalOrderPrice.ToString("C2"));
 
         }
 

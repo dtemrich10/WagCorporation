@@ -59,7 +59,7 @@
     <Compile Include="WagCorporation\Accessories\iAccessory.cs" />
     <Compile Include="WagCorporation\Accessories\Lights.cs" />
     <Compile Include="WagCorporation\Accessories\Painted.cs" />
-    <Compile Include="WagCorporation\Accessories\Power.cs" />
+    <Compile Include="WagCorporation\Accessories\Powered.cs" />
     <Compile Include="WagCorporation\Accessories\Switch.cs" />
     <Compile Include="WagCorporation\Gadgets\Gadget.cs" />
     <Compile Include="WagCorporation\Gadgets\IGadget.cs" />

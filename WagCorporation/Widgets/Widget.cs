@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Widgets
 {
-    public class Widget : IWidgets
+    public abstract class Widget : IWidgets
     {
         private int _iGears;
         private int _iSprings;
