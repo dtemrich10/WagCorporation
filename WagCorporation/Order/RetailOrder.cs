@@ -10,7 +10,14 @@ namespace Order
 {
     public class RetailOrder : IOrder
     {
-        ArrayList _Gadgets = new ArrayList();
+        private ArrayList _Gadgets = new ArrayList();
+        private int _iNumberOfSmallGadgets = 0;
+        private int _iNumberOfMediumGadgets = 0;
+        private int _iNumberOfLargeGadgets = 0;
+
+        private string _sColorDefaultGadget;
+        private string _sColorDefaultWidget;
+        private string _sDefaultPower;
 
         public bool isRetailOrder { get; set; }
 
@@ -21,65 +28,156 @@ namespace Order
 
         public void Build()
         {
-            string sResponse;
-            int iNum;
+            try
+            {
 
-            Console.WriteLine("Welcone to express ordering.");
-            Console.Write("How many Small Gadgets would you like? > ");
-            sResponse = Console.ReadLine();
-            iNum = int.Parse(sResponse);
+                string sResponse;
 
-            Console.Write("How many Medium Gadgets would you like? > ");
-            sResponse = Console.ReadLine();
-            iNum = int.Parse(sResponse);
+                Console.WriteLine("Welcome to express ordering.");
+                Console.Write("What color would you like the Gagdets to be (Blue, Gold, Green, Orange, Red, Purple) ? > ");
+                _sColorDefaultGadget = Console.ReadLine();
+                Console.Write("What color would you like the Widgets to be (Blue, Gold, Green, Orange, Red, Purple) ? > ");
+                _sColorDefaultWidget = Console.ReadLine();
 
-            Console.Write("How many Large Gadgets would you like? > ");
-            sResponse = Console.ReadLine();
-            iNum = int.Parse(sResponse);
+
+                Console.Write("How many Small Gadgets would you like? > ");
+                sResponse = Console.ReadLine();
+                _iNumberOfSmallGadgets = int.Parse(sResponse);
+                if (_iNumberOfSmallGadgets > 0 )
+                {
+                    SetupSmallGadgets();
+                }
+
+                Console.Write("How many Medium Gadgets would you like? > ");
+                sResponse = Console.ReadLine();
+                _iNumberOfMediumGadgets = int.Parse(sResponse);
+                if (_iNumberOfMediumGadgets > 0 )
+                {
+                    float fDifference = MediumGadgets.GetMediumPowerDifference();
+                    Console.WriteLine("A Medium Gadget comes with a Battery or Solar for " + fDifference.ToString("C2") + " more.");
+                    Console.Write("What would you like for the medium power default B)attery or S)olar ? > ");
+                    _sDefaultPower = Console.ReadLine();
+                    SetupMediumGadgets();
+                }
+
+                Console.Write("How many Large Gadgets would you like? > ");
+                sResponse = Console.ReadLine();
+                _iNumberOfLargeGadgets = int.Parse(sResponse);
+                if (_iNumberOfLargeGadgets > 0)
+                {
+                    float fDifference = LargeGadgets.GetLargePowerDifference();
+                    Console.WriteLine("A Large Gadget comes with a Solar or Generator for " + fDifference.ToString("C2") + " more.");
+                    Console.Write("What would you like for the large power default S)olar or G)enerator ? > ");
+                    _sDefaultPower = Console.ReadLine();
+                    SetupLargeGadgets();
+                }
+            }
+            catch(Exception e)
+            {
+                Console.WriteLine("Error has occurred " + e.Message);
+                return;
+            }
+
+            GetOrderSummary();
         }
 
-        private void setupSmallGadgets( int iNum )
+        private void SetupSmallGadgets()
         {
             Gadget gadget = null;
-            for (int ii=0; ii < iNum; ii++)
+            for (int ii=0; ii < _iNumberOfSmallGadgets; ii++)
             {
                 gadget = new SmallGadgets();
-                setupGadget(gadget);
+                SetupGadget(gadget);
             }
 
         }
 
-        private void setupMediumGadgets( int iNum )
+        private void SetupMediumGadgets()
         {
             Gadget gadget = null;
-            for (int ii = 0; ii < iNum; ii++)
+            for (int ii = 0; ii < _iNumberOfMediumGadgets; ii++)
             {
-                gadget = new MediumGadgets();
-                setupGadget(gadget);
+                gadget = new MediumGadgets(_sDefaultPower);
+                SetupGadget(gadget);
             }
 
         }
 
-        private void setupLargeGadgets( int iNum )
+        private void SetupLargeGadgets()
         {
             Gadget gadget = null;
-            for (int ii = 0; ii < iNum; ii++)
+            for (int ii = 0; ii < _iNumberOfLargeGadgets; ii++)
             {
                 gadget = new LargeGadgets();
-                setupGadget(gadget);
+                SetupGadget(gadget);
             }
 
         }
 
-        private void setupGadget(Gadget gadget)
+        private void SetupGadget(Gadget gadget)
         {
-            gadget.SetupPainted();
+            gadget.isRetailOrder = true;
+            gadget.SetupPaintedDefault( _sColorDefaultGadget );
+            gadget.sDefaultWidgetColor = _sColorDefaultWidget;
             gadget.SetupWidgets();
             gadget.SetupSwitches();
             gadget.SetupButtons();
             gadget.SetupLights();
             gadget.SetupPower();
             _Gadgets.Add(gadget);
+        }
+
+        private void GetOrderSummary()
+        {
+            int iWidGears = 0;
+            int iWidSprings = 0;
+            int iWidLevers = 0;
+            int iWidgets = 0;
+
+            int iTotalWidGears = 0;
+            int iTotalWidSprings = 0;
+            int iTotalWidLevers = 0;
+            int iTotalWidgets = 0;
+
+            int iTotalButtons = 0;
+            int iTotalLights = 0;
+            int iTotalSwitches = 0;
+
+            float fTotalOrderPrice = 0.0f;
+
+            Console.WriteLine();
+
+            foreach (Gadget g in _Gadgets)
+            {
+                ((Gadget)g).GetWidgetOrderSummary(out iWidgets, out iWidGears, out iWidSprings, out iWidLevers);
+                iTotalWidGears += iWidGears;
+                iTotalWidSprings += iWidSprings;
+                iTotalWidLevers += iWidLevers;
+                iTotalWidgets += iWidgets;
+
+                iTotalButtons += ((Gadget)g).Buttons;
+                iTotalLights += ((Gadget)g).Lights;
+                iTotalSwitches += ((Gadget)g).Switches;
+
+                fTotalOrderPrice += ((Gadget)g).GetGadgetOrderTotalPrice();
+
+            }
+
+            Console.WriteLine("Total Gadgets > " + (_iNumberOfSmallGadgets + _iNumberOfMediumGadgets + _iNumberOfLargeGadgets).ToString());
+
+            Console.WriteLine("Total Butttons > " + iTotalButtons.ToString());
+            Console.WriteLine("Total Lights > " + iTotalLights.ToString());
+            Console.WriteLine("Total Switches > " + iTotalSwitches.ToString());
+
+            Console.WriteLine("Total Widgets > " + iTotalWidgets.ToString());
+            Console.WriteLine("Total Gears > " + iTotalWidGears.ToString());
+            Console.WriteLine("Total Springs > " + iTotalWidSprings.ToString());
+            Console.WriteLine("Total Levers > " + iTotalWidLevers.ToString());
+
+            Console.WriteLine("Sub Total Price > " + fTotalOrderPrice.ToString("C2"));
+            Console.WriteLine("Shipping Cost > $25.00");
+            fTotalOrderPrice += 25.00f;
+            Console.WriteLine("Grand Total Order Price > " + fTotalOrderPrice.ToString("C2"));
         }
 
     }

@@ -59,17 +59,48 @@ namespace Widgets
                 _iLevers = value;
             }
         }
-        public virtual void SetupLevers()
+        public virtual void SetupLevers(bool isRetailOrder)
         {
 
         }
-        public virtual void SetupGears()
+        public virtual void SetupGears(bool isRetailOrder)
         {
 
         }
-        public virtual void SetupSprings()
+        public virtual void SetupSprings(bool isRetailOrder)
         {
 
+        }
+
+        public void SetupPaintedDefault(string sColor)
+        {
+            _painted.paint = Painted.Paint.painted;
+            switch (sColor)
+            {
+                case "Blue":
+                case "blue":
+                    _painted.color = Painted.Colors.Blue;
+                    break;
+                case "Green":
+                case "green":
+                    _painted.color = Painted.Colors.Green;
+                    break;
+                case "Orange":
+                case "orange":
+                    _painted.color = Painted.Colors.Orange;
+                    break;
+                case "Red":
+                case "red":
+                    _painted.color = Painted.Colors.Red;
+                    break;
+                case "Purple":
+                case "purple":
+                    _painted.color = Painted.Colors.Purple;
+                    break;
+                default:
+                    _painted.color = Painted.Colors.Gold;
+                    break;
+            }
         }
 
         public void SetupPainted()

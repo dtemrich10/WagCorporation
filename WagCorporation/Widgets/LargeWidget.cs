@@ -12,19 +12,28 @@ namespace Widgets
         {
             Console.WriteLine("Adding a Large widget for " + Price.ToString("C2"));
         }
-        public override void SetupGears()
+        public override void SetupGears(bool isRetailOrder)
         {
-            Console.WriteLine("Large widget has nine gears");
+            if (!isRetailOrder)
+            {
+                Console.WriteLine("Large widget has nine gears");
+            }
             Gears = 9;
         }
-        public override void SetupLevers()
+        public override void SetupLevers(bool isRetailOrder)
         {
-            Console.WriteLine("Large widget has two lever.");
+            if (!isRetailOrder)
+            {
+                Console.WriteLine("Large widget has two lever.");
+            }
             Levers = 2;
         }
-        public override void SetupSprings()
+        public override void SetupSprings(bool isRetailOrder)
         {
-            Console.WriteLine("Large widget has four springs.");
+            if (!isRetailOrder)
+            {
+                Console.WriteLine("Large widget has four springs.");
+            }
             Springs = 4;
         }
     }

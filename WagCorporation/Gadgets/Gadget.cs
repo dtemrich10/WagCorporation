@@ -17,12 +17,16 @@ namespace Gadgets
         private float _Price;
         private Painted _painted;
         private Powered _power;
+        private static Powered _powerStatic = new Powered();
 
 
         private int _iTotalGears = 0;
         private int _iTotalSprings = 0;
         private int _iTotalLevers = 0;
         private float _fTotalWidgetPrice = 0.0f;
+
+        private bool _isRetailOrder = false;
+        private string _sDefaultWidgetColor;
 
         protected int _defaultButtons;
         protected int _defaultSwitches;
@@ -57,6 +61,30 @@ namespace Gadgets
                 _Switches.Quantity  = value;
             }
         }
+
+        public bool isRetailOrder
+        {
+            get
+            {
+                return _isRetailOrder;
+            }
+            set
+            {
+                _isRetailOrder = value;
+            }
+        }
+        public string sDefaultWidgetColor
+        {
+            get
+            {
+                return _sDefaultWidgetColor;
+            }
+            set
+            {
+                _sDefaultWidgetColor = value;
+            }
+        }
+
         protected string SwitchPrice
         {
             get
@@ -149,10 +177,17 @@ namespace Gadgets
         private void AddWidget(IWidgets iw)
         {
             _Widgets.Add(iw);
-            iw.SetupGears();
-            iw.SetupLevers();
-            iw.SetupSprings();
-            ((Widget)iw).SetupPainted();
+            iw.SetupGears(_isRetailOrder);
+            iw.SetupLevers(_isRetailOrder);
+            iw.SetupSprings(_isRetailOrder);
+            if (!_isRetailOrder)
+            {
+                ((Widget)iw).SetupPainted();
+            }
+            else
+            {
+                ((Widget)iw).SetupPaintedDefault(_sDefaultWidgetColor);
+            }
         }
 
         public virtual void SetupWidgets()
@@ -182,9 +217,41 @@ namespace Gadgets
             return _power.GetTotalPrice();
         }
 
-        protected float GetGadgetPowerPrice(int option)
+        protected static float GetGadgetPowerPrice(int option)
         {
-            return _power.PowerPrice[option];
+            return _powerStatic.PowerPrice[option];
+        }
+
+        public void SetupPaintedDefault( string sColor )
+        {
+            _painted.paint = Painted.Paint.painted;
+            switch (sColor)
+            {
+                case "Blue":
+                case "blue":
+                    _painted.color = Painted.Colors.Blue;
+                    break;
+                case "Green":
+                case "green":
+                    _painted.color = Painted.Colors.Green;
+                    break;
+                case "Orange":
+                case "orange":
+                    _painted.color = Painted.Colors.Orange;
+                    break;
+                case "Red":
+                case "red":
+                    _painted.color = Painted.Colors.Red;
+                    break;
+                case "Purple":
+                case "purple":
+                    _painted.color = Painted.Colors.Purple;
+                    break;
+                default:
+                    _painted.color = Painted.Colors.Gold;
+                    break;
+            }
+
         }
 
         public void SetupPainted()
@@ -277,10 +344,29 @@ namespace Gadgets
             Console.WriteLine("Subtotal Widget Price > " + _fTotalWidgetPrice.ToString("C2"));
         }
 
+        public void GetWidgetOrderSummary(out int iTotalWidgets,  out int iTotalGears, out int iTotalSprings, out int iTotalLevers)
+        {
+            iTotalGears = 0;
+            iTotalSprings = 0;
+            iTotalLevers = 0;
+            iTotalWidgets = _Widgets.Count;
+
+            foreach (IWidgets wi in _Widgets)
+            {
+                _fTotalWidgetPrice += ((Widget)wi).getWidgetPrice();
+                iTotalGears += ((Widget)wi).Gears;
+                iTotalSprings += ((Widget)wi).Springs;
+                iTotalLevers += ((Widget)wi).Levers;
+            }
+        }
+
         public float GetGadgetOrderTotalPrice()
         {
             float fTotalWGadgetPrice = Price + _power.GetTotalPriceMoney() + _painted.GetTotalPrice();
-            Console.WriteLine("Subtotal Gadget Price > " + fTotalWGadgetPrice.ToString("C2"));
+            if (!_isRetailOrder)
+            {
+                Console.WriteLine("Subtotal Gadget Price > " + fTotalWGadgetPrice.ToString("C2"));
+            }
 
             return fTotalWGadgetPrice +  + _fTotalWidgetPrice;
         }

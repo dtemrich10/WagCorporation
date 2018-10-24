@@ -8,8 +8,8 @@ namespace Widgets
 {
     public interface IWidgets
     {
-        void SetupGears();
-        void SetupSprings();
-        void SetupLevers();
+        void SetupGears(bool isRetailOrder);
+        void SetupSprings(bool isRetailOrder);
+        void SetupLevers(bool isRetailOrder);
     }
 }

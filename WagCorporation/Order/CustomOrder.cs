@@ -95,7 +95,7 @@ namespace Order
                 ((Gadget)g).GetPainted();
 
                 ((Gadget)g).GetWidgetOrderSummary();
-                fTotalOrderPrice = ((Gadget)g).GetGadgetOrderTotalPrice();
+                fTotalOrderPrice += ((Gadget)g).GetGadgetOrderTotalPrice();
                 Console.WriteLine("Total Gadget & Widget Price > " + fTotalOrderPrice.ToString("C2"));
                 
             }

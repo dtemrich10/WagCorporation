@@ -12,19 +12,28 @@ namespace Widgets
         {
             Console.WriteLine("Adding a small widget for " + Price.ToString("C2"));
         }
-        public override void SetupGears()
+        public override void SetupGears( bool isRetailOrder )
         {
-            Console.WriteLine("Small widget has two gears");
+            if (!isRetailOrder)
+            {
+                Console.WriteLine("Small widget has two gears");
+            }
             Gears = 2;
         }
-        public override void SetupLevers()
+        public override void SetupLevers( bool isRetailOrder )
         {
-            Console.WriteLine("Small widget has one lever.");
+            if (!isRetailOrder)
+            {
+                Console.WriteLine("Small widget has one lever.");
+            }
             Levers = 1;
         }
-        public override void SetupSprings()
+        public override void SetupSprings( bool isRetailOrder )
         {
-            Console.WriteLine("Small widget has three springs.");
+            if (!isRetailOrder)
+            {
+                Console.WriteLine("Small widget has three springs.");
+            }
             Springs = 3;
         }
 
