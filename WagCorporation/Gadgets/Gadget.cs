@@ -341,7 +341,8 @@ namespace Gadgets
             Console.WriteLine("This order comes with " + _iTotalGears.ToString()  + " Gears");
             Console.WriteLine("This order comes with " + _iTotalLevers.ToString() + " Levers");
             Console.WriteLine("This order comes with " + _iTotalSprings.ToString() + " Springs");
-            Console.WriteLine("Subtotal Widget Price > " + _fTotalWidgetPrice.ToString("C2"));
+            Console.WriteLine();
+            Console.WriteLine("Subtotal Widget Price       > \t{0,20}", _fTotalWidgetPrice.ToString("C2"));
         }
 
         public void GetWidgetOrderSummary(out int iTotalWidgets,  out int iTotalGears, out int iTotalSprings, out int iTotalLevers)
@@ -365,7 +366,7 @@ namespace Gadgets
             float fTotalWGadgetPrice = Price + _power.GetTotalPriceMoney() + _painted.GetTotalPrice();
             if (!_isRetailOrder)
             {
-                Console.WriteLine("Subtotal Gadget Price > " + fTotalWGadgetPrice.ToString("C2"));
+                Console.WriteLine("Subtotal Gadget Price       > \t{0,20}", fTotalWGadgetPrice.ToString("C2"));
             }
 
             return fTotalWGadgetPrice +  + _fTotalWidgetPrice;

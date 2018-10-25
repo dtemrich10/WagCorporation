@@ -21,6 +21,7 @@ namespace Order
             ArrayList Gadgets = new ArrayList();
             Gadget gadget = null;
             float fTotalOrderPrice = 0.0f;
+            float fRunningTotalOrderPrice = 0.0f;
 
             do
             {
@@ -96,13 +97,17 @@ namespace Order
 
                 ((Gadget)g).GetWidgetOrderSummary();
                 fTotalOrderPrice += ((Gadget)g).GetGadgetOrderTotalPrice();
-                Console.WriteLine("Total Gadget & Widget Price > " + fTotalOrderPrice.ToString("C2"));
-                
+                Console.WriteLine("Total Gadget & Widget Price > \t{0,20}", fTotalOrderPrice.ToString("C2"));
+                fRunningTotalOrderPrice += fTotalOrderPrice;
+                fTotalOrderPrice = 0.0f;
+
             }
 
-            Console.WriteLine("Shipping Cost > $25.00");
-            fTotalOrderPrice += 25.00f;
-            Console.WriteLine("Grand Total Order Price > " + fTotalOrderPrice.ToString("C2"));
+            Console.WriteLine();
+            Console.WriteLine("Grand Total Order Price      > \t{0,20}", fRunningTotalOrderPrice.ToString("C2"));
+            Console.WriteLine("Shipping Cost                > \t{0,20}", "$25.00");
+            fRunningTotalOrderPrice += 25.00f;
+            Console.WriteLine("Total Order & Shipping Price > \t{0,20}", fRunningTotalOrderPrice.ToString("C2"));
 
         }
 

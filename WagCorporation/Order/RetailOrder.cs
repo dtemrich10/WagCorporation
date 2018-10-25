@@ -163,21 +163,23 @@ namespace Order
 
             }
 
-            Console.WriteLine("Total Gadgets > " + (_iNumberOfSmallGadgets + _iNumberOfMediumGadgets + _iNumberOfLargeGadgets).ToString());
+            Console.WriteLine("******Order Summary*****");
 
-            Console.WriteLine("Total Butttons > " + iTotalButtons.ToString());
-            Console.WriteLine("Total Lights > " + iTotalLights.ToString());
-            Console.WriteLine("Total Switches > " + iTotalSwitches.ToString());
+            Console.WriteLine("Total Gadgets  > {0, 5} {1, 5}", (_iNumberOfSmallGadgets + _iNumberOfMediumGadgets + _iNumberOfLargeGadgets).ToString(), " that are painted " +  _sColorDefaultGadget);
 
-            Console.WriteLine("Total Widgets > " + iTotalWidgets.ToString());
-            Console.WriteLine("Total Gears > " + iTotalWidGears.ToString());
-            Console.WriteLine("Total Springs > " + iTotalWidSprings.ToString());
-            Console.WriteLine("Total Levers > " + iTotalWidLevers.ToString());
+            Console.WriteLine("Total Butttons > {0, 5}", iTotalButtons.ToString());
+            Console.WriteLine("Total Lights   > {0, 5}", iTotalLights.ToString());
+            Console.WriteLine("Total Switches > {0, 5}", iTotalSwitches.ToString());
 
-            Console.WriteLine("Sub Total Price > " + fTotalOrderPrice.ToString("C2"));
-            Console.WriteLine("Shipping Cost > $25.00");
+            Console.WriteLine("Total Widgets  > {0, 5} {1, 5}", iTotalWidgets.ToString(), " that are painted " + _sColorDefaultWidget);
+            Console.WriteLine("Total Gears    > {0, 5}", iTotalWidGears.ToString());
+            Console.WriteLine("Total Springs  > {0, 5}", iTotalWidSprings.ToString());
+            Console.WriteLine("Total Levers   > {0, 5}", iTotalWidLevers.ToString());
+
+            Console.WriteLine("Sub Total Price         > {0, 20}", fTotalOrderPrice.ToString("C2"));
+            Console.WriteLine("Shipping Cost           > {0, 20}", "$25.00");
             fTotalOrderPrice += 25.00f;
-            Console.WriteLine("Grand Total Order Price > " + fTotalOrderPrice.ToString("C2"));
+            Console.WriteLine("Grand Total Order Price > {0, 20}", fTotalOrderPrice.ToString("C2"));
         }
 
     }
