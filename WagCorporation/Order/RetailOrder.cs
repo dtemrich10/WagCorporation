@@ -108,7 +108,7 @@ namespace Order
             Gadget gadget = null;
             for (int ii = 0; ii < _iNumberOfLargeGadgets; ii++)
             {
-                gadget = new LargeGadgets();
+                gadget = new LargeGadgets(_sDefaultPower);
                 SetupGadget(gadget);
             }
 
